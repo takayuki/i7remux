@@ -1,0 +1,46 @@
+AviFile.o: AviFile.cc AviFile.h AviStrList.h Cons.h Cons.cc RiffChunk.h \
+  RiffData.h AviIdx1.h Reloc.h RiffList.h RiffChunkMem.h RiffChunkIdx1.h \
+  RiffFragDisk.h RiffFrag.h RiffChunkDisk.h RiffChunkEmpty.h \
+  RiffChunkFile.h RiffChunkFrags.h RiffChunkIgn.h RiffChunkIndx.h \
+  RiffListIgn.h
+AviIdx1.o: AviIdx1.cc AviFile.h AviStrList.h Cons.h Cons.cc RiffChunk.h \
+  RiffData.h AviIdx1.h Reloc.h RiffList.h RiffChunkMem.h RiffChunkIdx1.h
+AviStrList.o: AviStrList.cc AviStrList.h Cons.h Cons.cc RiffChunk.h \
+  RiffData.h AviIdx1.h Reloc.h RiffList.h RiffChunkMem.h
+Cons.o: Cons.cc
+Reloc.o: Reloc.cc Cons.h Cons.cc Reloc.h
+RiffChunk.o: RiffChunk.cc AviFile.h AviStrList.h Cons.h Cons.cc \
+  RiffChunk.h RiffData.h AviIdx1.h Reloc.h RiffList.h RiffChunkMem.h \
+  RiffChunkIdx1.h
+RiffChunkDisk.o: RiffChunkDisk.cc AviFile.h AviStrList.h Cons.h Cons.cc \
+  RiffChunk.h RiffData.h AviIdx1.h Reloc.h RiffList.h RiffChunkMem.h \
+  RiffChunkIdx1.h RiffChunkDisk.h
+RiffChunkEmpty.o: RiffChunkEmpty.cc AviFile.h AviStrList.h Cons.h Cons.cc \
+  RiffChunk.h RiffData.h AviIdx1.h Reloc.h RiffList.h RiffChunkMem.h \
+  RiffChunkIdx1.h RiffChunkEmpty.h
+RiffChunkFile.o: RiffChunkFile.cc RiffChunkFile.h Reloc.h Cons.h Cons.cc \
+  RiffChunkDisk.h RiffChunk.h RiffData.h AviIdx1.h
+RiffChunkFrags.o: RiffChunkFrags.cc AviFile.h AviStrList.h Cons.h Cons.cc \
+  RiffChunk.h RiffData.h AviIdx1.h Reloc.h RiffList.h RiffChunkMem.h \
+  RiffChunkIdx1.h RiffChunkFrags.h RiffFrag.h
+RiffChunkIdx1.o: RiffChunkIdx1.cc AviFile.h AviStrList.h Cons.h Cons.cc \
+  RiffChunk.h RiffData.h AviIdx1.h Reloc.h RiffList.h RiffChunkMem.h \
+  RiffChunkIdx1.h
+RiffChunkIgn.o: RiffChunkIgn.cc AviIdx1.h Cons.h Cons.cc Reloc.h \
+  RiffChunkIgn.h RiffChunk.h RiffData.h
+RiffChunkIndx.o: RiffChunkIndx.cc RiffChunkIndx.h AviStrList.h Cons.h \
+  Cons.cc RiffChunk.h RiffData.h AviIdx1.h Reloc.h RiffList.h \
+  RiffChunkMem.h
+RiffChunkMem.o: RiffChunkMem.cc RiffChunkMem.h RiffChunk.h RiffData.h \
+  AviIdx1.h Cons.h Cons.cc Reloc.h
+RiffData.o: RiffData.cc RiffData.h AviIdx1.h Cons.h Cons.cc Reloc.h
+RiffFrag.o: RiffFrag.cc RiffFrag.h AviIdx1.h Cons.h Cons.cc Reloc.h
+RiffFragDisk.o: RiffFragDisk.cc RiffChunk.h RiffData.h AviIdx1.h Cons.h \
+  Cons.cc Reloc.h RiffFragDisk.h RiffFrag.h
+RiffList.o: RiffList.cc RiffChunk.h RiffData.h AviIdx1.h Cons.h Cons.cc \
+  Reloc.h RiffChunkDisk.h RiffChunkFile.h RiffChunkFrags.h RiffFrag.h \
+  RiffChunkIdx1.h RiffChunkMem.h RiffList.h
+RiffListIgn.o: RiffListIgn.cc RiffListIgn.h Cons.h Cons.cc Reloc.h \
+  RiffData.h AviIdx1.h RiffList.h
+i7remux.o: i7remux.cc AviFile.h AviStrList.h Cons.h Cons.cc RiffChunk.h \
+  RiffData.h AviIdx1.h Reloc.h RiffList.h RiffChunkMem.h RiffChunkIdx1.h

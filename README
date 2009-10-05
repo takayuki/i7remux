@@ -1,0 +1,134 @@
+i7remux -- video converter for COWON iAUDIO 7 (and other products)
+
+***WARNING***
+USE THIS SOFTWARE COMPLETELY AT YOUR OWN RISK. ALTHOUGH I MADE EVERY EFFORT
+TO MAKE THIS SOFTWARE USEFUL, IT POTENTIALLY CAUSES SERIOUS DAMAGE TO YOUR
+MP3 PLAYERS. THIS SOFTWARE IS PROVIDED AS IS WITHOUT ANY WARRANTIES.
+
+1. What is i7remux?
+
+I7remux is a video converter for COWON iAUDIO 7. While it was developed for
+iAUDIO 7, it may be used for other COWON's products with video playback such
+as iAUDIO U3. In fact, i7remux is greatly inspired by MaxSt's work, U3Video,
+which is a similar tool for iAUDIO U3.
+
+Note that i7remux is NOT a real video converter. Rather, i7remux is a tool to
+tweak AVI files which other prevailing video converters made, and playback
+them on iAUDIO 7. The current goal is to fix some subtle problems in the AVI
+files created by FFmpeg and MEncoder for iAUDIO 7.
+
+
+2. What are "problems" in AVI files?
+
+Basically, iAUDIO 7 playbacks very usual AVI files (Xvid video and MP3 audio).
+Although there are some restrictions on fps or bitrates, it is an easy task to
+convert other video formats into such an AVI format using video converters
+you can find on the Internet. However, video files they produce are usually
+NOT playable on iAUDIO 7 or other COWON's products. In other words, there are
+some more "restrictions" in AVI files their products can correctly playback.
+I7remux tries fix or relieve such restrictions.
+
+
+3. Why not jetAudio?
+
+JetAudio is a relatively large and comprehensive audio utility provided by
+COWON and has ability to produce iAUDIO 7 compatible video files. It nicely
+works, however, there are some unfavorable shortcomings; (1) JetAudio has
+fewer adjustable parameters in its video conversion. (2) JetAudio puts small
+"COWON" logo in the beginning of its video output. (3) JetAudio creates
+video files which make unpleasant random noise on playback. (4) JetAudio ex-
+clusively runs in Windows. All of them are never preferable "features" to me.
+
+
+4. System Requirements
+
+I7remux is a tool for Unix-like environment. And, today's average UNIX systems
+mush have sufficient tools to compile i7remux. I guess many of you want to use
+it on your Windows, but unfortunately I do not have enough resources to prepare
+Windows version. If you port this to Windows or even other operation systems,
+please contact me. I will merge your efforts into my source code.
+
+
+5. Install
+
+I7remux is a usual free software. I hope everything works fine.
+
+  $ ./configure
+  $ make
+  $ su
+  # make install
+
+
+6. Usage
+
+First of all, you have to prepare a sophisticated video converter and make
+AVI files which roughly satisfies iAUDIO 7. Even though, as I mentioned above,
+I wrote i7remux using FFmpeg and MEncoder, i7remux should be able to treat
+with any output of other converters. If you have tried, send me the results.
+Your tries will uncover many hidden bugs in i7remux :-)
+
+6.1 Step 1: Create initial AVI files
+
+In the user's manual, you can find that iAUDIO 7 requires AVI video files to
+be encoded in the following setting.
+
+  Video: Xvid 1-pass, 256-384kbps, 160x128, 15 fps
+  Audio: MP3 128kbps CBR
+
+The sample configuration below will satisfy the requirements and I am actually
+using them with those options.
+
+  FFmpeg:
+  $ ffmpeg -i <input> -f avi -g 1 -b 256k -r 12 -s 160x128 -vtag XVID \
+    -vcodec libxvid -ab 128k -ar 44100 -ac 2 -acodec libmp3lame <output>
+
+  MEncoder:
+  $ mencoder -ofps 12 -vf scale=160:128 -ovc xvid -xvidencopts \
+    bitrate=384:max_bframes=0:max_key_interval=1 \
+    -oac mp3lame -lameopts cbr,br=128 -of avi -o <output> <input>
+
+6.2 Step 2: Remux AVI for iAUDIO 7
+
+Once you have gotten an AVI file using video converters such as FFmpeg and
+MEncoder, i7remux dose the final work for you. Note that input files to
+i7remux were originally output files from the above video converters.
+
+  $ i7remux <input> <output>
+
+There are some options available. You can list them as usual. The -x option
+may be relevant to the noise problem I mentioned above. JetAudio splits
+a frame of MP3 stream at arbitrary position to store them in AVI chunks.
+I suspect that such discontinuous frames increase the processor load of iAUDIO
+and make random noise while decoding MP3 stream. In default, i7remux saves
+boundary of MP3 frames. But, the -x option simulates jetAudio if you like.
+
+  $ i7remux -h
+  usage: i7remux [-dhvxyV] [[-i] <input avi>] [[-o] <output avi>]
+    -d   dry run (read input, but do not actually write output)
+    -v   verbose (useful with -d to parse and verify input)
+    -x   ignore MP3 frame boundary (simulate jetAudio; NOT recommended)
+    -y   overwrite output
+    -h   print this message
+    -V   print version
+
+
+7. Copyright
+
+This software is provided under so-called "as is" condition. You can do
+anything you like with this software as long as you follow GNU Public License
+version 2. I avoided the newer version of GPL intentionally, but you are
+allowed to apply version 3 (or any later version) to your products derived
+from this software. See the COPYING file included in the source package.
+
+
+8. Link
+
+U3 Video Converter (simple, drag-and-drop)
+http://www.iaudiophile.net/forums/showthread.php?t=12808
+
+FFmpeg
+http://ffmpeg.mplayerhq.hu/
+
+MPlayer and MEncoder
+http://www.mplayerhq.hu/design7/news.html
+
