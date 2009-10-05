@@ -38,7 +38,7 @@ class RiffList : public RiffData {
   Cons<RiffData*> head;
 
  public:
-  RiffList(const char*,uint32_t,char*);
+  RiffList(const char*,uint32_t,const char*);
   virtual ~RiffList(void);
 
  protected:

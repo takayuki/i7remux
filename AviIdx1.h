@@ -55,7 +55,7 @@ class AviIdx1 {
   const AviIdx1& operator=(const AviIdx1&);
 
  public:
-  int push(char*,off_t,uint32_t,int);
+  int push(const char*,off_t,uint32_t,int);
   void reverse(void);
 };
 

@@ -30,7 +30,7 @@
 #include "RiffChunkMem.h"
 #include "RiffList.h"
 
-RiffList::RiffList(const char* fcc,uint32_t cb,char* type)
+RiffList::RiffList(const char* fcc,uint32_t cb,const char* type)
   : RiffData(fcc,cb)
 {
   memcpy(this->type,type,4);

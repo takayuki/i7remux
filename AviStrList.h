@@ -46,7 +46,7 @@ struct _avimainheader {
   uint32_t dwReserved[4];
 } __attribute__ ((packed));
 
-typedef struct _avistreamheader {
+struct _avistreamheader {
   char fccType[4];
   char fccHandler[4];
   uint32_t dwFlags;
@@ -129,7 +129,7 @@ struct _avisuperindex_entry {
   uint32_t dwDuration;
 } __attribute__ ((packed));
 
-typedef struct _avisuperindex_chunk {
+struct _avisuperindex_chunk {
   uint16_t wLongsPerEntry;
   uint8_t  bIndexSubType;
   uint8_t  bIndexType;
@@ -144,7 +144,7 @@ struct _avistdindex_entry {
   uint32_t dwSize;
 } __attribute__ ((packed));
 
-typedef struct _avistdindex_chunk {
+struct _avistdindex_chunk {
   uint16_t wLongsPerEntry;
   uint8_t  bIndexSubType;
   uint8_t  bIndexType;
@@ -155,7 +155,7 @@ typedef struct _avistdindex_chunk {
   struct _avistdindex_entry aIndex[];
 } __attribute__ ((packed));
 
-typedef struct _odmlextendedaviheader {
+struct _odmlextendedaviheader {
   uint32_t dwTotalFrames;
 } __attribute__ ((packed));
 

@@ -684,10 +684,14 @@ AviFile::i7remux(int fd,int flags)
       strh = (_avistreamheader*)((RiffChunkMem*)ent->strh)->data;
       char id[4];
       if (!memcmp(strh->fccType,"vids",4)) {
-	sprintf(id,"%02ddc",stream++);
+	sprintf(id,"%02d",stream++);
+	id[2] = 'd';
+	id[3] = 'c';
 	strh->dwLength = totalFrame;
       } else if (!memcmp(strh->fccType,"auds",4)) {
-	sprintf(id,"%02dwb",stream++);
+	sprintf(id,"%02d",stream++);
+	id[2] = 'w';
+	id[3] = 'b';
 	_waveformatex* strf;
 	strf = (_waveformatex*)((RiffChunkMem*)ent->strf)->data;
 	strh->dwScale = 1;

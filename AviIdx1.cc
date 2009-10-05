@@ -58,7 +58,7 @@ AviIdx1::~AviIdx1(void)
 }
 
 int
-AviIdx1::push(char* fcc,off_t offset,uint32_t cb,int flags)
+AviIdx1::push(const char* fcc,off_t offset,uint32_t cb,int flags)
 {
   if (fcc[2] == 'd') {
     this->head.push(new AviIdx1Ent(fcc,0x10,offset,cb));

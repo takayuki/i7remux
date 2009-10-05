@@ -85,7 +85,7 @@ using them with those options.
   MEncoder:
   $ mencoder -ofps 12 -vf scale=160:128 -ovc xvid -xvidencopts \
     bitrate=384:max_bframes=0:max_key_interval=1 \
-    -oac mp3lame -lameopts cbr,br=128 -of avi -o <output> <input>
+    -oac mp3lame -lameopts cbr:preset=128 -of avi -o <output> <input>
 
 6.2 Step 2: Remux AVI for iAUDIO 7
 
