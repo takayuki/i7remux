@@ -110,6 +110,7 @@ union _avistreamformat {
 #define AVI_INDEX_IS_DATA    0x80
 
 struct _aviindex_entry {
+  int dummy;
   uint32_t adw[];
 } __attribute__ ((packed));
 
